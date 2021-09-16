@@ -18,6 +18,7 @@ from tqdm import tqdm
 
 # import boto3
 import time_split_ids_data as ids_data
+#import test_ids_data as ids_data
 import pyro
 import pyro.distributions as dist
 # from botocore.exceptions import ClientError
@@ -86,7 +87,7 @@ def save_posterior(filename, ids):
 
     posterior_dic['test_ids'] = ids.test_ids
     posterior_dic['data_file'] = ids.filename
-
+    posterior_dic['tags'] = ';'.join(args.add_tags)
     torch.save(posterior_dic, filename)
 #     upload_s3(filename)
 
@@ -156,7 +157,7 @@ def run(args, group_count, step_count, data_file_name, train_ratio=0.8):
     else:
         experiment = Experiment(
             api_key="rAOeE45NqnekTXmKrqg0Do12C",
-            project_name="test-for-pyro",
+            project_name="uem-training",
             workspace="707728642li",
         )
 #         experiment = Experiment(
@@ -221,7 +222,7 @@ def run(args, group_count, step_count, data_file_name, train_ratio=0.8):
 def main(args):
     print(args)
 
-    train_ratios = [0.2, 0.5, 0.8]
+    train_ratios = [1.0] # [0.2, 0.5, 0.8]
     group_count = 10
     step_count = args.step_counts
     

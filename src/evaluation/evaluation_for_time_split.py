@@ -196,7 +196,7 @@ def main(args):
     print("start_info\ttags\tpre@1\trecal@1\tpre@5\trecal@5\tpre@10\trecal@10\tdone_info")
     
     my_comet_api = dict(api_key="rAOeE45NqnekTXmKrqg0Do12C",
-                        project_name="test-for-pyro",
+                        project_name="uem-training",
                         workspace="707728642li",)
     
     api_key = my_comet_api['api_key']
