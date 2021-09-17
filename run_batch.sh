@@ -38,7 +38,7 @@ for line in $( cat $3 ) ; do
         s=${each[2]}
         echo $( date )' START: ' $( echo $i | awk -F'/' '{print $NF}' ) >> ${log}
         # already change id_data to user-split 
-		python ./src/learning/${1}/new_${2}_for_sightseeing.split_by_${1}.py -f ${f} -s 10 -t ${r} split_by_${1} $tag 
+		python ./src/learning/${1}/new_${2}_for_sightseeing.split_by_${1}.py -f ${f} -s ${s} -t ${r} split_by_${1} $tag 
         echo $( date )' FINISH: ' $( echo $i | awk -F'/' '{print $NF}' ) >> ${log}
 		done_f=done_${f##.*/}_${s}_${r}_split_by_${1}_$tag
 		touch ${done_f} && aws s3 cp ${done_f} ${s3_done}
