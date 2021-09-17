@@ -128,6 +128,6 @@ alias le='less -S'
 alias sr='screen -r'
 alias ll='ls -lh'
 
-! [ -a ~/temp-bin ] && mkdir ~/temp-bin && cp ./s3 ~/temp-bin && export PATH="~/temp-bin:$PATH"
+#! [ -a ~/temp-bin ] && mkdir ~/temp-bin && cp ./s3 ~/temp-bin && export PATH="~/temp-bin:$PATH"
 
 # [ `screen -ls | grep '.jupyter' | wc -l` -eq 0 ] && screen -dmS jupyter bash -c 'jupyter lab' && echo Run Jupyter Lab Successfully\!
