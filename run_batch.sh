@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 usage="Usage: bash ${0} time|user s|t|st|base batch_file"
-s3='s3://kyoto-shi-photos/group_share/result0916/'
+s3='s3://kyoto-shi-photos/group_share/result0916'
 s3_done="${s3}/done/"
 s3_model="${s3}/pkl_model/"
 
@@ -38,10 +38,11 @@ for line in $( cat $3 ) ; do
         s=${each[2]}
         echo $( date )' START: ' $( echo $i | awk -F'/' '{print $NF}' ) >> ${log}
         # already change id_data to user-split 
-		python ./src/learning/${1}/new_${2}_for_sightseeing.split_by_${1}.py -f ${f} -s 100 -t ${r} split_by_${1} $tag 
+		python ./src/learning/${1}/new_${2}_for_sightseeing.split_by_${1}.py -f ${f} -s 10 -t ${r} split_by_${1} $tag 
         echo $( date )' FINISH: ' $( echo $i | awk -F'/' '{print $NF}' ) >> ${log}
 		done_f=done_${f##.*/}_${s}_${r}_split_by_${1}_$tag
 		touch ${done_f} && aws s3 cp ${done_f} ${s3_done}
 done
 
-aws s3 sync ./pkl_model ${s3_model}
+aws s3 sync ./pkl_model/ ${s3_model}
+mv ./pkl_model/* ./pkl_bkp/

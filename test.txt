@@ -1,0 +1,1 @@
+[47;31mEnviroment configuration done.[0m
